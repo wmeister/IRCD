@@ -1,0 +1,16 @@
+﻿  Validating sources
+  Copying sources remotely to '127.0.0.1'
+  Validating architecture
+  Validating architecture
+  Starting remote build
+  Compiling sources:
+  main.cpp
+D:\mega\src\ircd2\IRCD\IRCD\main.cpp(76,13): warning : multi-character character constant [-Wmultichar]
+D:\mega\src\ircd2\IRCD\IRCD\main.cpp(76,17): warning : overflow in implicit constant conversion [-Woverflow]
+D:\mega\src\ircd2\IRCD\IRCD\main.cpp(93,11): warning : 'foo' may be used uninitialized in this function [-Wmaybe-uninitialized]
+D:\mega\src\ircd2\IRCD\IRCD\main.cpp(93,11): warning :   gets(foo);
+D:\mega\src\ircd2\IRCD\IRCD\main.cpp(93,11): warning :            ^
+  Linking objects
+D:\mega\src\ircd2\IRCD\IRCD\obj\x64\Debug\main.o : error : In function `main':
+D:\mega\src\ircd2\IRCD\IRCD\main.cpp(93): warning : the `gets' function is dangerous and should not be used.
+  IRCD.vcxproj -> d:\mega\src\ircd2\IRCD\IRCD\bin\x64\Debug\IRCD.out
