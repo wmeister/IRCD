@@ -96,9 +96,6 @@ message parse_msg(string s)
 		vector<string> pair = split_once(tail, " ");
 		prefix = pair[0];
 		s = pair[1];
-		cout << "prefix=" << prefix << endl;
-		cout << "s=" << s << endl;
-
 	}
 	if (s.find(' :') != string::npos)
 	{
@@ -107,18 +104,41 @@ message parse_msg(string s)
 		vector<string> pair = split_once(s, " :");
 		s = pair[0];
 		trailing = pair[1];
-		//vector<string> args = split_on_spaces(s);
+		args = split_on_spaces(s);
+
+		// deviation from original python function
+		vector<string> trail = split_once(trailing, " ");
+		args.push_back(trail[0]);
+		args.push_back(trail[1]);
 	}
-	message x;
-	return x;
+	else
+    {
+	    args = split_on_spaces(s);
+    }
+
+	message msg;
+
+	msg.command = args[0];
+	args.erase(args.begin());
+	msg.host = prefix;
+	msg.arguments = args;
+
+	return msg;
 }
 
 int main()
 {
-    vector<string> words = split_on_spaces("hello    world whatup");
-    cout << words.size();
-    cout << words[0] << endl << words[1] << endl << words[2] << endl;
-	//parse_msg(":test!~test@test.com PRIVMSG #channel :Hi!");
+	message msg = parse_msg(":test!~test@test.com PRIVMSG #channel :Hi!");
+
+	cout << "msg.host=" << msg.host << endl;
+	cout << "msg.command=" << msg.command << endl;
+	cout << "msg.arguments=[";
+	for(auto s : msg.arguments)
+    {
+	    cout << s << ",";
+    }
+	cout << "]" << endl;
+
 	//=================
 	char* foo;
 	gets(foo);
