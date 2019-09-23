@@ -21,7 +21,6 @@ vector<string> split_on_spaces(string str)
     {
         if(str[i] == ' ')
         {
-            cout << " found space, word=" << word << endl;
           if(word != "")
           {
               words.push_back(word);
