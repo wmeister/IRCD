@@ -12,6 +12,34 @@ struct message
 	vector<string> arguments;
 };
 
+vector<string> split_on_spaces(string str)
+{
+    vector<string> words;
+    string word = "";
+
+    for(int i=0; i < str.length(); i++)
+    {
+        if(str[i] == ' ')
+        {
+            cout << " found space, word=" << word << endl;
+          if(word != "")
+          {
+              words.push_back(word);
+              word = "";
+          }
+        }
+        else
+        {
+            word += str[i];
+        }
+    }
+
+    if(word != "")
+        words.push_back(word);
+
+    return words;
+}
+
 vector<string> split_once(string str, string seperator)
 {
 	string first, second;
@@ -80,6 +108,7 @@ message parse_msg(string s)
 		vector<string> pair = split_once(s, " :");
 		s = pair[0];
 		trailing = pair[1];
+		//vector<string> args = split_on_spaces(s);
 	}
 	message x;
 	return x;
@@ -87,7 +116,10 @@ message parse_msg(string s)
 
 int main()
 {
-	parse_msg(":test!~test@test.com PRIVMSG #channel :Hi!");
+    vector<string> words = split_on_spaces("hello    world whatup");
+    cout << words.size();
+    cout << words[0] << endl << words[1] << endl << words[2] << endl;
+	//parse_msg(":test!~test@test.com PRIVMSG #channel :Hi!");
 	//=================
 	char* foo;
 	gets(foo);
