@@ -97,7 +97,7 @@ message parse_msg(string s)
 		prefix = pair[0];
 		s = pair[1];
 	}
-	if (s.find(' :') != string::npos)
+	if (s.find(" :") != string::npos)
 	{
 		string trailing;
 

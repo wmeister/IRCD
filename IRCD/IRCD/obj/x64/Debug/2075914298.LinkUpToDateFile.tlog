@@ -1,1 +1,0 @@
-g++ -o "/home/pleb/projects/IRCD/bin/x64/Debug/IRCD.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/pleb/projects/IRCD/../IRCD/obj/x64/Debug/main.o
