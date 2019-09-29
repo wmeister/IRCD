@@ -42,7 +42,7 @@ namespace irc {
 		{
 			string tail = s.substr(1);
 			vector<string> pair = split_once(tail, " ");
-			prefix = pair[0];
+			prefix = pair[0]; // XXX there might be a bug here look at python code
 			s = pair[1];
 		}
 		if (s.find(" :") != string::npos)
@@ -55,9 +55,11 @@ namespace irc {
 			args = split_on_spaces(s);
 
 			// deviation from original python function
-			vector<string> trail = split_once(trailing, " ");
-			args.push_back(trail[0]);
-			args.push_back(trail[1]);
+			//vector<string> trail = split_once(trailing, " ");
+			//args.push_back(trail[0]);
+			//args.push_back(trail[1]);
+			vector<string> trail = split_on_spaces(trailing);
+			args.insert(args.end(), trail.begin(), trail.end());
 		}
 		else
 		{

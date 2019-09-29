@@ -21,6 +21,7 @@ void error(const char* msg)
 
 int main(int argc, char* argv[])
 {
+	/*
 	const int PORT = 6667;
 	int sockfd, newsockfd;
 	socklen_t clilen;
@@ -53,7 +54,6 @@ int main(int argc, char* argv[])
 		if (n < 0) error("ERROR reading from socket");
 		printf("Here is the message: %s\n", buffer);
 
-		//message msg = parse_msg(":test!~test@test.com PRIVMSG #channel :Hi!");
 		string msgs = buffer;
 		cout << "size=" << msgs.size() << endl;
 		cout << "found=" << msgs.find("\r\n") << endl;
@@ -87,15 +87,26 @@ int main(int argc, char* argv[])
 			cout << "]" << endl;
 		}
 		
-		//=================
-		//char* foo;
-		//gets(foo);
-		//=================
+
 	}
 	n = write(newsockfd, "I got your message", 18);
 	if (n < 0) error("ERROR writing to socket");
 	close(newsockfd);
 	close(sockfd);
+	*/
+
+	//message msg = parse_msg(":test!~test@test.com PRIVMSG #channel :Hi!");
+	message msg = parse_msg("USER a a 127.0.0.1 :realname");
+	cout << "msg.host=" << msg.host << endl;
+	cout << "msg.command=" << msg.command << endl;
+	cout << "msg.arguments=[";
+	for (auto s : msg.arguments)
+	{
+		cout << s << ",";
+	}
+	cout << "]" << endl;
+
+	// BREAKPOINT HERE
 
 	return 0;
 }
